@@ -34,9 +34,29 @@ let services = [
     errors: 43
   }
 ]
+//GET    /api/services
 app.get("/api/services", (req, res) => {
-  res.json(services);
+  const { search, status } = req.query;
+
+  let result = services;
+
+  // Search by service name
+  if (search) {
+    result = result.filter(service =>
+      service.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  // Filter by status
+  if (status) {
+    result = result.filter(service =>
+      service.status.toLowerCase() === status.toLowerCase()
+    );
+  }
+
+  res.json(result);
 });
+// GET    /api/services/:id
 app.get("/api/services/:id", (req, res) => {
   console.log(req.params.id);
    const id = Number(req.params.id);
@@ -52,7 +72,7 @@ app.get("/api/services/:id", (req, res) => {
   res.json(service);
 });
 
-
+// POST   /api/services
 app.post("/api/services", (req, res) => {
   const { name, status, responseTime, errors } = req.body;
 
@@ -74,7 +94,7 @@ app.post("/api/services", (req, res) => {
   console.log(newService)
   res.status(201).json(newService);
 });
-
+// PUT    /api/services/:id
 app.put("/api/services/:id", (req, res) => {
   const id = Number(req.params.id);
 
@@ -107,7 +127,7 @@ app.put("/api/services/:id", (req, res) => {
 console.log(service);
   res.status(200).json(service);
 });
-
+// DELETE /api/services/:id
 app.delete("/api/services/:id", (req, res) => {
   const id = Number(req.params.id);
 

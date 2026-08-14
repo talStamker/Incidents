@@ -1,8 +1,18 @@
 // GET    /api/services
-async function getServices() {
+async function getServices(search = "", status = "") {
   try {
+    const params = new URLSearchParams();
+
+    if (search) {
+      params.append("search", search);
+    }
+
+    if (status) {
+      params.append("status", status);
+    }
+
     const response = await fetch(
-      "http://localhost:5000/api/services"
+      `http://localhost:5000/api/services?${params.toString()}`
     );
 
     if (!response.ok) {

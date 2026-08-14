@@ -3,12 +3,21 @@ import { getServices , getService, createService, updateService, deleteService} 
 import './App.css'
 
 function App() {
-  const [services, setservices] = useState([])
+  // const [services, setservices] = useState([])
+//   const [search, setSearch] = useState("");
+//   const [status, setStatus] = useState("");
+//   useEffect(() => {
+//   getServices(search, status).then((data) => {
+//     setServices(data);
+//   });
+// }, [search, status]);
+  const [services, setServices] = useState([]);
   useEffect(() => {
-    getServices().then((data)=> {
-      setservices(data);
-    });
-  }, []);
+  getServices("API", "healthy").then((data) => {
+    setServices(data);
+    console.log(data)
+  });
+}, []);
   const [service, setService] = useState(null)
   useEffect(() => {
   getService(2).then((data) => {
