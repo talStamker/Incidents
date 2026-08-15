@@ -2115,3 +2115,5 @@ npm run dev
     │   └── api/
     │       └── itemsApi.js
     └── package.json
+    npm install bootstrap-icons
+    בשביל הציור של הפח ובקובץ main import "bootstrap-icons/font/bootstrap-icons.css";

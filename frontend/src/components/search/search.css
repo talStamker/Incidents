@@ -1,0 +1,38 @@
+.service-search {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 10px;
+
+    width: 240px;
+
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+
+    background: white;
+}
+
+.service-search:focus-within {
+    border-color: #198754;
+    box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.15);
+}
+
+.service-search i {
+    color: #666;
+    font-size: 14px;
+}
+
+.service-search input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    font-size: 14px;
+}
+
+.service-search input::placeholder {
+    color: #999;
+}

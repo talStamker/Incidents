@@ -1,0 +1,31 @@
+.service-filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.service-filter label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.service-filter select {
+    padding: 7px 10px;
+
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+
+    background: white;
+    color: #333;
+
+    font-size: 14px;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.service-filter select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.15);
+}

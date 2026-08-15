@@ -1,0 +1,151 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 1000;
+}
+
+.service-modal {
+    width: 420px;
+    max-width: 90%;
+
+    background: #fff;
+
+    border-radius: 8px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-header h2 {
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-close {
+    border: none;
+    background: transparent;
+
+    font-size: 26px;
+
+    color: #666;
+
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+.modal-body {
+    padding: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    padding: 9px 11px;
+
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #198754;
+
+    box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.15);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 16px 22px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+.modal-button {
+    padding: 7px 14px;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.close-button {
+    border: 1px solid #ced4da;
+
+    background: #fff;
+    color: #555;
+}
+
+.close-button:hover {
+    background: #f5f5f5;
+}
+
+.add-modal-button {
+    border: none;
+
+    background: #198754;
+    color: white;
+}
+
+.add-modal-button:hover {
+    background: #157347;
+}
+
+.edit-modal-button {
+    border: none;
+
+    background: #ffc107;
+    color: #212529;
+}
+
+.edit-modal-button:hover {
+    background: #e0a800;
+}
