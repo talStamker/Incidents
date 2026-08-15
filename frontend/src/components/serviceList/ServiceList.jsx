@@ -1,5 +1,5 @@
 import React from "react";
-import "./services.css";
+import "./ServiceList.css";
 import Service from "./Service";
 import AddButton from "../buttons/addButton/AddButton";
 

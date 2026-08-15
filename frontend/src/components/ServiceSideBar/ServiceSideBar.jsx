@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./ServiceSidebar.css";
+import ServiceSearch from "./ServiceSearch";
+import ServiceFilter from "./ServiceFilter";
 
 export default function ServiceSidebar({ onFilterChange }) {
     const [search, setSearch] = useState("");
     const [status, setStatus] = useState("");
 
-    const handleSearchChange = (e) => {
-        const value = e.target.value;
-
+    const handleSearchChange = (value) => {
         setSearch(value);
 
         onFilterChange({
@@ -16,9 +16,7 @@ export default function ServiceSidebar({ onFilterChange }) {
         });
     };
 
-    const handleStatusChange = (e) => {
-        const value = e.target.value;
-
+    const handleStatusChange = (value) => {
         setStatus(value);
 
         onFilterChange({
@@ -43,36 +41,17 @@ export default function ServiceSidebar({ onFilterChange }) {
             <h3>Filters</h3>
 
             <div className="sidebar-section">
-
-                <label>Search</label>
-
-                <div className="sidebar-search">
-                    <i className="bi bi-search"></i>
-
-                    <input
-                        type="text"
-                        placeholder="Search services..."
-                        value={search}
-                        onChange={handleSearchChange}
-                    />
-                </div>
-
+                <ServiceSearch
+                    value={search}
+                    onChange={handleSearchChange}
+                />
             </div>
 
             <div className="sidebar-section">
-
-                <label>Status</label>
-
-                <select
+                <ServiceFilter
                     value={status}
                     onChange={handleStatusChange}
-                >
-                    <option value="">All statuses</option>
-                    <option value="healthy">Healthy</option>
-                    <option value="degraded">Degraded</option>
-                    <option value="down">Down</option>
-                </select>
-
+                />
             </div>
 
             <button
