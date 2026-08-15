@@ -1,11 +1,11 @@
 import "./AddButton.css";
 
-export default function AddButton({ onAdd }) {
+export default function AddButton({ onClick }) {
     return (
         <button
             type="button"
             className="add-button"
-            onClick={onAdd}
+            onClick={onClick}
         >
             <i className="bi bi-plus-lg"></i>
             <span>Add Service</span>

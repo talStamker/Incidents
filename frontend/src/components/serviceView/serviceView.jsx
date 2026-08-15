@@ -15,17 +15,26 @@ export default function ServiceView({
     const [errors, setErrors] = useState(service?.errors ?? "");
 
     const isEdit = mode === "edit";
+    const [error, setError] = useState("");
 
     const handleSubmit = () => {
-        const serviceData = {
-            name: name.trim(),
-            status,
-            responseTime: Number(responseTime),
-            errors: Number(errors)
-        };
 
-        onSubmit(serviceData);
+    if (!name.trim() || responseTime === "" || errors === "") {
+        setError("Please fill in all fields");
+        return;
+    }
+
+    setError("");
+
+    const serviceData = {
+        name: name.trim(),
+        status,
+        responseTime: Number(responseTime),
+        errors: Number(errors)
     };
+
+    onSubmit(serviceData);
+};
 
     return (
         <div className="modal-overlay">
@@ -52,7 +61,9 @@ export default function ServiceView({
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Enter service name"
+                            required
                         />
+                        
                     </div>
 
                     <div className="form-group">
@@ -79,6 +90,7 @@ export default function ServiceView({
                                 setResponseTime(e.target.value)
                             }
                         />
+                        
                     </div>
 
                     <div className="form-group">
@@ -93,7 +105,7 @@ export default function ServiceView({
                             }
                         />
                     </div>
-
+                            {error && <p className="error-message">{error}</p>}
                 </div>
 
                 <div className="modal-footer">

@@ -149,3 +149,8 @@
 .edit-modal-button:hover {
     background: #e0a800;
 }
+.error-message {
+    color: #dc2626!important;
+    font-size: 14px;
+    margin-top: 5px;
+}
