@@ -8,10 +8,10 @@ import {
     deleteService
 } from "./api/servicesApi";
 
-import ServiceList from "./components/serviceList/ServiceList";
-import ServiceSidebar from "./components/sideBar/ServiceSidebar";
-import AddServiceModal from "./components/serviceView/add/AddServiceModal";
-import EditServiceModal from "./components/serviceView/edit/EditServiceModal";
+import ServiceList from "./components/ServiceList/ServiceList";
+import ServiceSidebar from "./components/ServiceSideBar/ServiceSidebar";
+import AddServiceModal from "./components/ServiceModal/add/AddServiceModal";
+import EditServiceModal from "./components/ServiceModal/edit/EditServiceModal";
 
 import "./App.css";
 

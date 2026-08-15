@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ServiceSidebar.css";
-import ServiceSearch from "./ServiceSearch";
-import ServiceFilter from "./ServiceFilter";
+import ServiceSearch from "./ServiceSearch/ServiceSearch";
+import ServiceFilter from "./ServiceFilter/ServiceFilter";
 
 export default function ServiceSidebar({ onFilterChange }) {
     const [search, setSearch] = useState("");

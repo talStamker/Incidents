@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ServiceView.css";
+import "./ServiceModal.css";
 
 export default function ServiceView({
     mode,
