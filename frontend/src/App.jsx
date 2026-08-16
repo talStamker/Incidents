@@ -2,29 +2,32 @@
 import { useEffect, useState } from "react";
 
 import {
-    getServices,
-    createService,
-    updateService,
-    deleteService
-} from "./api/servicesApi";
+     getIncidents,
+  createIncident, 
+  updateIncident,
+  deleteIncident
+} from "./api/IncidentsApi";
 
-import ServiceList from "./components/ServiceList/ServiceList";
-import ServiceSidebar from "./components/ServiceSideBar/ServiceSidebar";
-import AddServiceModal from "./components/ServiceModal/add/AddServiceModal";
-import EditServiceModal from "./components/ServiceModal/edit/EditServiceModal";
+import IncidentList from "./components/IncidentList/IncidentList";
+import IncidentSidebar from "./components/IncidentSideBar/IncidentSideBar";
+import AddIncidentModal from "./components/IncidentModal/add/AddIncidentModal";
+import EditIncidentModal from "./components/IncidentModal/edit/EditIncidentModal";
 
 import "./App.css";
 
 
 function App() {
 
-    // All services displayed on the screen
-    const [services, setServices] = useState([]);
+    // All Incidents displayed on the screen
+    const [incidents , setIncidents ] = useState([]);
 
     // Search + filter
     const [filters, setFilters] = useState({
-        search: "",
-        status: ""
+        severity: "",
+        status: "",
+        from: "",
+        to: "",
+        sort: ""
     });
 
     // Add modal
@@ -33,40 +36,45 @@ function App() {
     // Edit modal
     const [showEditModal, setShowEditModal] = useState(false);
 
-    // Service currently being edited
-    const [selectedService, setSelectedService] = useState(null);
+    // Incident currently being edited
+    const [selectedIncident, setSelectedIncident] = useState(null);
 
     // Error message
     const [error, setError] = useState("");
 
 
     // =========================
-    // GET SERVICES
+    // GET Incidents 
     // =========================
 
     useEffect(() => {
-        loadServices();
+        loadIncidents ();
     }, [filters]);
 
 
-    async function loadServices() {
+    async function loadIncidents () {
 
         try {
 
             setError("");
 
-            const data = await getServices(
-                filters.search,
+            const data = await getIncidents(
+                filters.sort,
+                filters.from,
+                filters.to,
+                filters.severity,
                 filters.status
+                
+                
             );
 
-            setServices(data);
+            setIncidents (data);
 
         } catch (error) {
 
             console.error(error);
 
-            setError("Failed to load services");
+            setError("Failed to load incidents ");
         }
     }
 
@@ -85,24 +93,24 @@ function App() {
     }
 
 
-    async function handleAddService(newService) {
+    async function handleAddIncident(newIncident) {
 
         try {
 
             setError("");
 
-            await createService(newService);
+            await createIncident(newIncident);
 
             setShowAddModal(false);
 
             // Load the list again with the current search/filter
-            await loadServices();
+            await loadIncidents ();
 
         } catch (error) {
 
             console.error(error);
 
-            setError("Failed to add service");
+            setError("Failed to add incident");
         }
     }
 
@@ -111,9 +119,9 @@ function App() {
     // EDIT
     // =========================
 
-    function openEditModal(service) {
+    function openEditModal(incident) {
 
-        setSelectedService(service);
+        setSelectedIncident(incident);
 
         setShowEditModal(true);
     }
@@ -123,33 +131,33 @@ function App() {
 
         setShowEditModal(false);
 
-        setSelectedService(null);
+        setSelectedIncident(null);
     }
 
 
-    async function handleEditService(updatedService) {
+    async function handleEditIncident(updatedIncident) {
 
         try {
 
             setError("");
 
-            await updateService(
-                selectedService.id,
-                updatedService
+            await updateIncident(
+                selectedIncident.id,
+                updatedIncident
             );
 
             setShowEditModal(false);
 
-            setSelectedService(null);
+            setSelectedIncident(null);
 
             // Load updated list
-            await loadServices();
+            await loadIncidents ();
 
         } catch (error) {
 
             console.error(error);
 
-            setError("Failed to update service");
+            setError("Failed to update incident");
         }
     }
 
@@ -158,18 +166,18 @@ function App() {
     // DELETE
     // =========================
 
-    async function handleDeleteService(id) {
+    async function handleDeleteIncident(id) {
 
         try {
 
             setError("");
 
-            await deleteService(id);
+            await   deleteIncident(id);
 
             // Remove it immediately from the displayed list
-            setServices((currentServices) =>
-                currentServices.filter(
-                    (service) => service.id !== id
+            setIncidents ((currentIncidents ) =>
+                currentIncidents .filter(
+                    (incident) => incident.id !== id
                 )
             );
 
@@ -177,7 +185,7 @@ function App() {
 
             console.error(error);
 
-            setError("Failed to delete service");
+            setError("Failed to delete incident");
         }
     }
 
@@ -188,17 +196,17 @@ function App() {
 
     return (
         <div className="app">
-        <ServiceSidebar
+         <IncidentSidebar
         onFilterChange={setFilters}
     />
 
     <main className="main-content">
 
-        <ServiceList
-            services={services}
+        <IncidentList
+            incidents={incidents}
             onAdd={openAddModal}
             onEdit={openEditModal}
-            onDelete={handleDeleteService}
+            onDelete={handleDeleteIncident}
             isError={error}
         />
 
@@ -207,19 +215,19 @@ function App() {
         {/* </div>  */}
     
     {showAddModal && (
-        <AddServiceModal
+        <AddIncidentModal
             onClose={closeAddModal}
-            onAdd={handleAddService}
+            onAdd={handleAddIncident}
         />
     )}
 
-    {showEditModal && selectedService && (
-        <EditServiceModal
-            service={selectedService}
+    {showEditModal && selectedIncident && (
+        <EditIncidentModal
+            incident={selectedIncident}
             onClose={closeEditModal}
-            onEdit={handleEditService}
+            onEdit={handleEditIncident}
         />
-    )}
+    )} 
 
     </div>
     );

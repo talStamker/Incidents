@@ -1,5 +1,5 @@
 
-import ServiceModal from "../ServiceModal";
+import IncidentModal from "../IncidentModal";
 
 export default function AddServiceModal({ onClose, onAdd }) {
 
@@ -8,7 +8,7 @@ export default function AddServiceModal({ onClose, onAdd }) {
     };
 
     return (
-        <ServiceModal
+        <IncidentModal
             mode="add"
             onClose={onClose}
             onSubmit={handleAdd}

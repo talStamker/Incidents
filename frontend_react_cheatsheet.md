@@ -1494,7 +1494,10 @@ const [date, setDate] = useState("");
   value={date}
   onChange={(e) => setDate(e.target.value)}
 />
+משתנה תאריך 
+const now = new Date();
 
+const updatedAt = now.toISOString().slice(0, 19);
 ============================================================
 32. Number
 ============================================================

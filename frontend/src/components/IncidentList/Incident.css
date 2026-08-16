@@ -1,4 +1,4 @@
-.service-card {
+.incident-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,15 +14,15 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.service-card:hover {
+.incident-card:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-.service-info {
+.incident-info {
     flex: 1;
 }
 
-.service-info h3 {
+.incident-info h3 {
     margin: 0 0 10px 0;
 
     font-size: 18px;
@@ -31,7 +31,7 @@
     color: #333;
 }
 
-.service-info p {
+.incident-info p {
     margin: 5px 0;
 
     font-size: 14px;
@@ -39,7 +39,7 @@
     color: #666;
 }
 
-.service-actions {
+.incident-actions {
     display: flex;
     align-items: center;
 
