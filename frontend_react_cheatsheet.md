@@ -1494,6 +1494,7 @@ const [date, setDate] = useState("");
   value={date}
   onChange={(e) => setDate(e.target.value)}
 />
+
 משתנה תאריך 
 const now = new Date();
 
@@ -2119,4 +2120,12 @@ npm run dev
     │       └── itemsApi.js
     └── package.json
     npm install bootstrap-icons
+
     בשביל הציור של הפח ובקובץ main import "bootstrap-icons/font/bootstrap-icons.css";
+    כדי להעתיק קוד מגיט האב ניכנס לטרמינל git clone https://github.com/talStamker/Services.git
+    cd Services
+    git remote remove origin
+    git remote add origin https://github.com/talStamker/Incidents.git
+    משנים את שם התיקייה ב-explorer
+  צריך לעשותnpm install
+
